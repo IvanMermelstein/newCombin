@@ -1,22 +1,13 @@
 import { FC } from 'react';
-import { ContextProps, useAppContext } from '../../context/AppContext';
 import style from './buttons.module.scss';
 
 interface Props {
     disabled: boolean;
+    reset: () => void;
+    save: () => void;
 }
 
-const Buttons: FC<Props> = ({ disabled }) => {
-    const { setSSN, setAddress, setFirstName, setLastName } =
-        useAppContext() as ContextProps;
-
-    const reset = () => {
-        setSSN('');
-        setAddress('');
-        setFirstName('');
-        setLastName('');
-    };
-
+const Buttons: FC<Props> = ({ disabled, reset, save }) => {
     return (
         <div className={style.container}>
             <button onClick={() => reset()} className={style.item}>
@@ -24,7 +15,8 @@ const Buttons: FC<Props> = ({ disabled }) => {
             </button>
             <button
                 disabled={disabled}
-                className={!disabled ? style.item : style.itemDisabled}>
+                className={!disabled ? style.item : style.itemDisabled}
+                onClick={() => save()}>
                 Save
             </button>
         </div>
