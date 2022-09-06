@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import AppContext from './context/AppContext';
 import './index.css';
 
 const root = ReactDOM.createRoot(
@@ -8,6 +9,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
     <React.StrictMode>
-        <App />
+        <AppContext>
+            <App />
+        </AppContext>
     </React.StrictMode>,
 );
